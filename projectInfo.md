@@ -1,0 +1,7 @@
+- user register
+- user login
+- cüzdan
+- para miktarı girilir
+- yüzdelik dilimlerden seçim yapılır
+- seçim yapılırken uyarı verilir.
+- local storage

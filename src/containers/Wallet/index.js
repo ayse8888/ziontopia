@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Input } from "../../components/Input";
 import { walletFormValuesSelector } from "../../redux/slices/walletSlice/selectors";
-import { setWalletFormValues } from "../../redux/slices/walletSlice/slice";
+import { reset, setWalletFormValues } from "../../redux/slices/walletSlice/slice";
 
 const Wallet = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const walletFormValues = useSelector(walletFormValuesSelector);
+
+  const [formDisabled, setFormDisabled] = useState(false)
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -25,22 +27,32 @@ const Wallet = () => {
   const handleMoneySubmit = (e) => {
     e.preventDefault();
     dispatch(setWalletFormValues(walletFormValues));
-    navigate("/");
-    console.log("formValues", walletFormValues);
+    // walletFormValues.money && setFormDisabled(true);
+    navigate("/rates");
   };
 
   return (
     <div>
+      {/* <nav>
+        <Link to="rates">Rates</Link>
+      </nav>
+      <Outlet context={walletFormValues.money} /> */}
       <form className="walletForm" onSubmit={handleMoneySubmit}>
         <Input
-          type="text"
+          type="number"
           placeholder="Enter Start Amount"
           className="moneyInput"
           name="money"
-          value={walletFormValues.moneyAmount}
+          value={walletFormValues.money}
           onChange={handleOnChange}
         />
-        <Input type="submit" className="submitInput" />
+        <button
+          className="submitInput"
+          type="submit"
+          // disabled={formDisabled}
+        >
+          Submit form
+        </button>
       </form>{" "}
       {/* <div>
         <button

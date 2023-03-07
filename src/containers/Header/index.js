@@ -13,6 +13,9 @@ const Header = () => {
             <Link to="wallet">Wallet</Link>
           </li>
           <li>
+            <Link to="rates">Wallet Rates</Link>
+          </li>
+          <li>
             <Link to="about">About</Link>
           </li>
         </ul>

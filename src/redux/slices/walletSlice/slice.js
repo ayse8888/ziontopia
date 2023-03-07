@@ -20,9 +20,11 @@ export const walletSlice = createSlice({
     setWalletFormValues: (state, action) => {
       state.walletForm.moneyAmount = action.payload;
     },
+    reset: () => initialState,
   },
 });
 
-export const { increment, decrement, setWalletFormValues } = walletSlice.actions;
+export const { increment, decrement, setWalletFormValues, reset } =
+  walletSlice.actions;
 
 export default walletSlice.reducer;

@@ -24,7 +24,6 @@ export const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     setFormValues(formValues);
-    console.log(formValues);
   };
 
   return (

@@ -1,11 +1,37 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import Modal from "../../../components/Modal";
 import { rateDatas } from "../../../datas";
-import { walletFormValuesSelector } from "../../../redux/slices/walletSlice/selectors";
+import { selectedRateSelector, walletFormValuesSelector } from "../../../redux/slices/walletSlice/selectors";
+import { setSelectedRate } from "../../../redux/slices/walletSlice/slice";
 import "./style.css";
 
 export const WalletRates = () => {
   const walletFormValues = useSelector(walletFormValuesSelector);
+  const selectedRate = useSelector(selectedRateSelector);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const toggleModal = (id, data) => {
+    if (isModalOpen) {
+      handleModalClose(id);
+      dispatch(setSelectedRate());
+    } else {
+      handleModalOpen(id);
+      dispatch(setSelectedRate(data));
+    }
+  };
 
   return (
     <div className="walletRatesContainer">
@@ -21,9 +47,14 @@ export const WalletRates = () => {
             (data.rateNumber * walletFormValues.money) / 100
           );
           const totalSum = Number(walletFormValues.money) + totalRate;
-          console.log(totalSum);
           return (
-            <div className="ratesTableRowContainer" key={data.id}>
+            <div
+              className="ratesTableRowContainer"
+              key={data.id}
+              onClick={() => {
+                toggleModal(data.id, data);
+              }}
+            >
               <div className="ratesTableRow">{data.month}</div>
               <div className="ratesTableRow">{data.rate}</div>
               <div className="ratesTableRow">
@@ -33,6 +64,14 @@ export const WalletRates = () => {
           );
         })}
       </div>
+      {isModalOpen && (
+        <Modal
+          closeModal={toggleModal}
+          modalContentText_1="Please be informed you cannot change your rate after selection."
+          modalContentText_2="Do You Confirm The Selected Rate ?"
+          confirmModal={() => navigate("/details", { state: selectedRate })}
+        />
+      )}
     </div>
   );
 };

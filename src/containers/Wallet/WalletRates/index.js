@@ -40,7 +40,7 @@ export const WalletRates = () => {
       <div className="ratesTableContainer">
         <div className="ratesTableHeader">
           <h4>Kitlenme Süresi</h4>
-          <h4>Oranlar</h4>
+          <h4 className="ratesTitle">Oranlar</h4>
           <h4>{}</h4>
         </div>
         {rateDatas?.map((data) => {

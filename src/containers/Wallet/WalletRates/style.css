@@ -41,3 +41,8 @@
     align-items: center;
     font-size: 25px;
 }
+
+.ratesTitle {
+    position: relative;
+    left: -55px;
+}

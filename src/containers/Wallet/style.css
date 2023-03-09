@@ -1,0 +1,30 @@
+.walletContainer {
+  padding: 1rem;
+}
+
+.walletForm {
+    display: flex;
+    align-items: center;
+}
+
+.moneyInput {
+  border: 2px solid #80ed99;
+  height: 40px;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  margin-right: 10px;
+  padding: 10px;
+  font-size: 25px;
+}
+
+.submitInput {
+    height: 65px;
+    width: 100%;
+    max-width: 75px;
+    border: none;
+    background-color: #80ed99;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 10px;
+}

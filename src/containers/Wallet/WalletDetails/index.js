@@ -5,19 +5,23 @@ import "./style.css";
 const WalletDetail = () => {
   const { state } = useLocation();
   return (
-    <>
+    <div className="walletDetailContainer">
       {state ? (
         <div className="rateContainer">
           <h3>Your Rate Plan</h3>
           <div className="ratePlanContainer">
-            <p>Month: {state.month}</p>
-            <p>Rate: {state.rate}</p>
+            <p>
+              <span className="monthTitle">Month:</span> {state.month}
+            </p>
+            <p>
+              <span className="rateTitle">Rate:</span> {state.rate}
+            </p>
           </div>
         </div>
       ) : (
         "You Have No Selected Rate Plan"
       )}
-    </>
+    </div>
   );
 };
 

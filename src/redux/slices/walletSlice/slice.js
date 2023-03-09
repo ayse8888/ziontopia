@@ -12,7 +12,7 @@ export const walletSlice = createSlice({
   initialState,
   reducers: {
     setWalletFormValues: (state, action) => {
-      state.walletForm.moneyAmount = action.payload;
+      state.walletForm = action.payload;
     },
     setSelectedRate: (state, action) => {
       state.selectedRate = action.payload

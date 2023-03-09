@@ -1,4 +1,4 @@
 export const walletFormValuesSelector = (state) =>
-  state.wallet?.walletForm?.moneyAmount;
+  state.wallet?.walletForm;
 
 export const selectedRateSelector = (state) => state.wallet?.selectedRate;

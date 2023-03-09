@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import walletReducer from "./slices/walletSlice/slice";
+import authReducer from "./slices/auth/slice";
 
 const store = configureStore({
   reducer: {
     wallet: walletReducer,
+    auth: authReducer,
   },
   preloadedState: loadFromLocalStorage(),
 });

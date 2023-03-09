@@ -1,29 +1,30 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Input } from "../../components/Input";
+import { registerFormValuesSelector } from "../../redux/slices/auth/selectors";
+import { setRegisterFormValues } from "../../redux/slices/auth/slice";
 import "./style.css";
 
 export const Register = () => {
 
-  const registerFormInitialValues = {
-    name: "",
-    email: "",
-    password: ""
-  }
-
-  const [formValues, setFormValues] = useState(registerFormInitialValues);
+  const dispatch = useDispatch();
+  const registerFormValues = useSelector(registerFormValuesSelector);
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
 
-    setFormValues({
-      ...formValues,
-      [name]: value,
-    });
+    dispatch(
+      setRegisterFormValues({
+        ...registerFormValues,
+        [name]: value,
+      })
+    );
   };
 
   const handleRegister = (e) => {
     e.preventDefault();
-    setFormValues(formValues);
+    dispatch(setRegisterFormValues(registerFormValues));
+    console.log("registerFormValues", registerFormValues);
   };
 
   return (
@@ -35,7 +36,7 @@ export const Register = () => {
           placeholder="Full Name"
           className="nameInput"
           onChange={handleOnChange}
-          value={formValues.name}
+          value={registerFormValues?.name}
           name="name"
         />
         <Input
@@ -43,7 +44,7 @@ export const Register = () => {
           placeholder="E-mail"
           className="emailInput"
           onChange={handleOnChange}
-          value={formValues.email}
+          value={registerFormValues?.email}
           name="email"
         />
         <Input
@@ -51,7 +52,7 @@ export const Register = () => {
           placeholder="Password"
           className="passwordInput"
           onChange={handleOnChange}
-          value={formValues.password}
+          value={registerFormValues?.password}
           name="password"
         />
         <Input type="submit" className="submitInput" />

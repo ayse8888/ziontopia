@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Input } from "../../components/Input";
 import { walletFormValuesSelector } from "../../redux/slices/walletSlice/selectors";
 import { setWalletFormValues } from "../../redux/slices/walletSlice/slice";
+import "./style.css";
 
 const Wallet = () => {
 
@@ -28,22 +29,23 @@ const Wallet = () => {
     navigate("/rates");
   };
 
+  // useEffect(() => {
+  //   dispatch(reset());
+  // }, [dispatch])
+
   return (
-    <div>
+    <div className="walletContainer">
       <form className="walletForm" onSubmit={handleMoneySubmit}>
         <Input
           type="number"
           placeholder="Enter Start Amount"
           className="moneyInput"
           name="money"
-          value={walletFormValues.money}
+          value={walletFormValues?.money}
           onChange={handleOnChange}
         />
-        <button
-          className="submitInput"
-          type="submit"
-        >
-          Submit form
+        <button className="submitInput" type="submit">
+          Save
         </button>
       </form>
     </div>

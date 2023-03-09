@@ -52,9 +52,9 @@
 }
 
 .confirmButton {
-  background-color: rgb(10, 166, 10);
+  background-color: #80ed99;
 }
 
 .cancelButton {
-  background-color: red;
+  background-color: rgb(246, 45, 45);
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Input } from "../../components/Input";
 import { registerFormValuesSelector } from "../../redux/slices/auth/selectors";
@@ -24,7 +24,6 @@ export const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     dispatch(setRegisterFormValues(registerFormValues));
-    console.log("registerFormValues", registerFormValues);
   };
 
   return (
